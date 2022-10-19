@@ -1,0 +1,231 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+}
+
+/*vertical menu bar*/
+
+.sidenav{
+    background-color:rgb(233, 233, 233) ;
+    left: -250px;
+    margin-top: 80px;
+    width: 250px;
+    height: 100vh;
+    text-align: center;
+    padding-top: 30px;
+    position: fixed;
+    transition:  all .5s ease;
+  }
+  
+  .sidenav a{
+    display: block;
+    padding: 20px 0;
+    color: black;
+    font-size: 15px;
+  }
+  
+  .sidenav a:hover{
+    color: #333;
+    background-color: #fff;
+    font-weight: bold;
+    border-right: 2px solid #ffffff;
+  }
+  .single-nav {
+      border-bottom: 1px solid #fff;
+  }
+  
+  #icon{
+    display: none;
+  }
+  
+  label #openbtn, label #closebtn{
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  label #openbtn{
+    top: 40px;
+    left: 20px;
+    font-size: 40px;
+    background-color: rgb(72, 120, 160);
+    padding: 10px;
+    color:#fff;
+  }
+  
+  label #closebtn{
+  z-index: 1111;
+  top: 20px;
+  left: -212px;
+  font-size: 30px;
+  }
+  
+  #icon:checked ~ .sidenav{
+    left:0;
+  }
+  
+  #icon:checked ~ label #closebtn {
+      left: 212px;
+      color: #fff;
+  }
+  
+  #icon:checked ~ label #openbtn{
+    left:170px;
+    opacity: 0;
+  }
+  
+  #icon:checked ~ .content{
+    margin-left: 200px;
+  }
+
+button{
+    margin-top: 40px;
+    background-color: lightseagreen;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 7px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+} 
+button:hover{
+    background-color: aqua;
+}
+
+  
+/*horizontal menu bar*/
+
+html{
+    font-size: 62.5%;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.main-nav{
+    width: 100%;
+    height: 8rem;
+    display: grid;
+    grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.logo{
+    display: grid;
+    grid-column: 2/3;
+    justify-content: start;
+    align-items: center;
+}
+.logo h2{
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    background: black;
+    -webkit-background-clip: text;
+}
+.menu-link{
+    grid-column: 4/5;
+}
+.menu-link ul{
+    height: 10rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo h2 span{
+    font-size: 3.5rem;
+}
+.menu-link ul li{
+    font-size: 1.8rem;
+}
+.menu-link ul li a{
+    text-transform: capitalize;
+    color: rgba(0, 0, 3, 0.8);
+    transition: 0.5s;
+}
+.menu-link ul li:hover > a{
+    transform-origin: left;
+    color: rgba(0, 0, 3, 1);
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+/*-----Card Section------*/
+.cards{
+    width: 58%;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 300px;
+    margin-bottom: 100px;
+    display: inline-block;
+    background-color: whitesmoke;
+  }
+  
+  .image img{
+    width: 380px;
+    border-top-right-radius: 1px;
+    border-top-left-radius: 5px;
+  }
+  
+  .title{
+    padding: 5px;
+    text-align: center;
+  }
+  
+  h1{
+    margin-top: -380px;
+    float: right;
+    font-family: 'Philospher', sans-serif;
+  }
+
+  h3{
+    margin-top: -340px;
+    float: right;
+    font-size: large;
+  }
+  
+  .cart-btn{
+    display: inline-block;
+    text-decoration: none;
+    background: white;
+    color: black;
+    width: 150px;
+    padding: 8px 0;
+    margin-top: -230px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: rgb(189, 125, 6);
+    border-style: double;
+    border-color: rgb(189, 125, 6);
+    font-size: 13px;
+    float: right;
+  }
+
+  .buy-btn{
+    display: inline-block;
+    background: white;
+    color: black;
+    width: 150px;
+    padding: 8px 0;
+    margin-top: -280px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 3px;
+    border-color: rgb(189, 125, 6);
+    font-size: 13px;
+    border-style: double;
+    float: right;
+  }
+  
+  .buy-btn:hover{
+    background-color: rgb(189, 125, 6);
+  }
+
+  .cart-btn:hover{
+    background-color: #fff;
+  }
+  
