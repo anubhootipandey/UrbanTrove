@@ -154,37 +154,38 @@ li{
 }
 
 /*-----Card Section------*/
+
+
+
 .cards{
-    width: 58%;
-    border-radius: 5px;
-    margin-top: 40px;
-    margin-left: 300px;
-    margin-bottom: 100px;
     display: inline-block;
     background-color: whitesmoke;
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 13px;
   }
   
   .image img{
-    width: 380px;
-    border-top-right-radius: 1px;
-    border-top-left-radius: 5px;
+    width: 100%;
+    border-radius: 10px;
   }
   
-  .title{
-    padding: 5px;
-    text-align: center;
-  }
-  
-  h1{
-    margin-top: -380px;
-    float: right;
+  .title h1{
+    text-align: start;
+    padding: 10px 0;
     font-family: 'Philospher', sans-serif;
   }
 
   h3{
-    margin-top: -340px;
-    float: right;
-    font-size: large;
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #088178;
   }
   
   .cart-btn{
@@ -192,10 +193,11 @@ li{
     text-decoration: none;
     background: white;
     color: black;
-    width: 150px;
+    width: 100px;
     padding: 8px 0;
-    margin-top: -230px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 5px;
     text-align: center;
     border-radius: 3px;
     background-color: rgb(189, 125, 6);
@@ -209,16 +211,16 @@ li{
     display: inline-block;
     background: white;
     color: black;
-    width: 150px;
+    width: 100px;
     padding: 8px 0;
-    margin-top: -280px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
     text-align: center;
     border-radius: 3px;
     border-color: rgb(189, 125, 6);
     font-size: 13px;
     border-style: double;
-    float: right;
+    float: left;
   }
   
   .buy-btn:hover{
