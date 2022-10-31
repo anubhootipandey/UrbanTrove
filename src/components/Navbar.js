@@ -48,10 +48,15 @@ const cardData = [
 
 const Page = () => {
   const[product, setProduct] = useState([]);
+  const[category, setCategory] = useState([]);
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
       console.log(response.data);
       setProduct(response.data);
+    });
+    axios.get("https://fakestoreapi.com/products/categories").then((response) => {
+      console.log(response.status);
+      setCategory(response.status);
     });
   }, []);
   return (
@@ -148,8 +153,7 @@ const Page = () => {
             })};
             
           </div>
-    </>
-  )
+    </>  )
 }
 
 export default Page;
