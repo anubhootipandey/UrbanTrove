@@ -120,6 +120,7 @@ li{
     background-color: whitesmoke;
     width: 22%;
     min-width: 180px;
+    min-height: 400px;
     padding: 9px 10px;
     border: 1px solid #cce7d0;
     border-radius: 10px;
@@ -128,6 +129,7 @@ li{
     margin-top: 100px;
     margin-left: 50px;
     margin-right: 30px;
+    margin-bottom: 10px;
     float: right;
   }
 
@@ -143,6 +145,7 @@ li{
   
   .title h1{
     text-align: start;
+    font-size: medium;
     padding: 10px 0;
     font-family: 'Philospher', sans-serif;
   }
@@ -161,9 +164,9 @@ li{
     color: black;
     width: 100px;
     padding: 8px 0;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     text-align: center;
     border-radius: 3px;
     background-color: rgb(189, 125, 6);
@@ -179,8 +182,8 @@ li{
     color: black;
     width: 100px;
     padding: 8px 0;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 40px;
+    margin-bottom: 0px;
     text-align: center;
     border-radius: 3px;
     border-color: rgb(189, 125, 6);
