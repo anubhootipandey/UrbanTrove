@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//import { useState } from 'react';
 import './Navbar.css';
 import axios from 'axios';
 
@@ -55,8 +54,8 @@ const Page = () => {
       setProduct(response.data);
     });
     axios.get("https://fakestoreapi.com/products/categories").then((response) => {
-      console.log(response.status);
-      setCategory(response.status);
+      console.log(response.data);
+      setCategory(response.data);
     });
   }, []);
   return (
@@ -70,36 +69,25 @@ const Page = () => {
         <li className="single-nav">
           <a href="#">
             <i className=""></i>
-            <span>Womens</span>
+            <span>{category[0]}</span>
           </a>
         </li>
         <li className="single-nav">
           <a href="#">
             <i className=""></i>
-            <span>Dresses</span>
+            <span>{category[1]}</span>
           </a>
         </li>
         <li className="single-nav">
           <a href="#">
             <i className=""></i>
-            <span>Shoes</span>
+            <span>{category[2]}</span>
           </a>
         </li>
         <li className="single-nav">
           <a href="#">
             <i className=""></i>
-            <span>Kids</span>
-          </a>
-        </li><li className="single-nav">
-          <a href="#">
-            <i className=""></i>
-            <span>Mens</span>
-          </a>
-        </li>
-        <li className="single-nav">
-          <a href="#">
-            <i className=""></i>
-            <span>Shirts</span>
+            <span>{category[3]}</span>
           </a>
         </li>
 
@@ -151,9 +139,9 @@ const Page = () => {
                     
                     );
             })};
-            
-          </div>
-    </>  )
+    </div>
+
+  </>  )
 }
 
 export default Page;
