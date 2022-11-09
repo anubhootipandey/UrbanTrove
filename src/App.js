@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from "./components/Navbar"
+import Listing from "./components/Listing"
 
 const App = () => {
   return( 
-  <Navbar />
+  <Listing />
   );
 }
 

@@ -1,60 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css';
+import './Listing.css';
 import axios from 'axios';
-
-const cardData = [
-    {
-        title:"Men Lightweight Blade Running Shoes",
-        price:"₹ 99.00 INR",
-        imageUrl:"https://m.media-amazon.com/images/I/71vB8ayd17L._UY625_.jpg"
-    },
-    {
-        title:"Faisonable Chunky High-top Men's Sneakers",
-        price:"₹ 274.00 INR",
-        imageUrl:"https://fashionmasters.in/wp-content/uploads/2022/07/product-image-1592744425_1024x1024_2x_dbf0994f-69b3-4fca-a9eb-b1330808d694.jpg"
-    },
-    {
-      title:"OZJI Men's Basketball Casual Boots",
-      price:"₹ 563.00 INR",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8n3hnmp-bIAlX8gfdNsE0G4mHoeePypSZRg&usqp=CAU"
-    },
-    {
-      title:"Woakers Men Blue Colourblocked Sneakers",
-      price:"₹ 99.00 INR",
-      imageUrl:"https://m.media-amazon.com/images/I/71vB8ayd17L._UY625_.jpg"
-    },
-    {
-      title:"OZJI Men's Basketball Casual Boots",
-      price:"₹ 563.00 INR",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeFcSYSybr8kXsZYJu8MMZQNx33DPmgXaL0w&usqp=CAU"
-    },
-    {
-      title:"OZJI Men's Basketball Casual Boots",
-      price:"₹ 563.00 INR",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfqjXRqlwK3WW8srx4sPLQK3XsdY6bXuHwpw&usqp=CAU"
-    },
-    {
-      title:"OZJI Men's Basketball Casual Boots",
-      price:"₹ 563.00 INR",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW2XWLEN7keEACy-eezv22tZhGNnTExzE_7Q&usqp=CAU"
-    },
-    {
-      title:"OZJI Men's Basketball Casual Boots",
-      price:"₹ 563.00 INR",
-      imageUrl:"https://m.media-amazon.com/images/I/71vB8ayd17L._UY625_.jpg"
-    },
-]
 
 const Page = () => {
   const[product, setProduct] = useState([]);
   const[category, setCategory] = useState([]);
+
+  const filterFunction = (item) => {
+    axios.get("https://fakestoreapi.com/products/category/" + item).then((response) => {
+      setProduct(response.data);
+      console.log(response.data);
+    });
+  }
+               
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
-      console.log(response.data);
       setProduct(response.data);
     });
     axios.get("https://fakestoreapi.com/products/categories").then((response) => {
-      console.log(response.data);
       setCategory(response.data);
     });
   }, []);
@@ -66,28 +29,28 @@ const Page = () => {
         <a href="#"></a>
       </div>
       <ul className="mainNav">
-        <li className="single-nav">
+        <li className="single-nav" onClick={() => filterFunction(category[0])}>
           <a href="#">
             <i className=""></i>
-            <span>{category[0]}</span>
+            <span className='text' >{category[0]}</span>
           </a>
         </li>
-        <li className="single-nav">
+        <li className="single-nav" onClick={() => filterFunction(category[1])}>
           <a href="#">
             <i className=""></i>
-            <span>{category[1]}</span>
+            <span className='text'>{category[1]}</span>
           </a>
         </li>
-        <li className="single-nav">
+        <li className="single-nav" onClick={() => filterFunction(category[2])}>
           <a href="#">
             <i className=""></i>
-            <span>{category[2]}</span>
+            <span className='text'>{category[2]}</span>
           </a>
         </li>
-        <li className="single-nav">
+        <li className="single-nav" onClick={() => filterFunction(category[3])}>
           <a href="#">
             <i className=""></i>
-            <span>{category[3]}</span>
+            <span className='text'>{category[3]}</span>
           </a>
         </li>
 
