@@ -53,9 +53,7 @@ const Page = () => {
             <span className='text'>{category[3]}</span>
           </a>
         </li>
-
       </ul>
-    <button>Shop All</button>  
   </div>
 
         <div className='logo'>
@@ -64,23 +62,6 @@ const Page = () => {
                 <span>store</span>
             </h2>
         </div>
-
-        <div className='menu-link'>
-            <ul>
-                <li>
-                    <a href="#">New</a>
-                </li>
-                <li>
-                    <a href="#">Women</a>
-                </li>
-                <li>
-                    <a href="#">Mens</a>
-                </li>
-                <li>
-                    <a href="#">Kids</a>
-                </li>
-            </ul>
-  </div>
     </nav>
     <div className="main">
     {product.map((item) => {

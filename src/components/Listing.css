@@ -33,23 +33,9 @@
   .single-nav {
       border-bottom: 1px solid #fff;
   }
-
-button{
-    margin-top: 40px;
-    background-color: lightseagreen;
-    border: none;
-    display: inline-block;
-    font-size: 16px;
-    padding: 7px 15px;
-    border-radius: 4px;
-    text-decoration: none;
-    
-} 
-button:hover{
-    background-color: aqua;
-    transition-duration: 0.4s ease;
-}
-
+  span{
+    text-transform: capitalize;
+  }
   
 /*horizontal menu bar*/
 
@@ -84,32 +70,10 @@ li{
     background: black;
     -webkit-background-clip: text;
 }
-.menu-link{
-    grid-column: 4/5;
-}
-.menu-link ul{
-    height: 10rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
 .logo h2 span{
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
-.menu-link ul li{
-    font-size: 1.8rem;
-}
-.menu-link ul li a{
-    text-transform: capitalize;
-    color: rgba(0, 0, 3, 0.8);
-    transition: 0.5s;
-}
-.menu-link ul li:hover > a{
-    transform-origin: left;
-    color: rgba(0, 0, 3, 1);
-    text-decoration: underline;
-    transition: 0.5s;
-}
+
 
 /*-----Card Section------*/
 
