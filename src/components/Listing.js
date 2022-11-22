@@ -9,7 +9,7 @@ const Page = () => {
   const filterFunction = (item) => {
     axios.get("https://fakestoreapi.com/products/category/" + item).then((response) => {
       setProduct(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     });
   }
                
@@ -61,6 +61,10 @@ const Page = () => {
                 <span>online</span>
                 <span>store</span>
             </h2>
+        </div>
+        <div className='search-box'>
+          <input type="search" placeholder="Search here"></input>
+          <button>Search</button>
         </div>
     </nav>
     <div className="main">

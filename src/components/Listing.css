@@ -73,11 +73,54 @@ li{
 .logo h2 span{
   font-size: 3.5rem;
 }
+.search-box{
+  display: flex;
+  margin: auto 0;
+  height: 35px;
+  line-height: 35px;
+}
+.search-box input{
+  border: none;
+  outline: none;
+  background: rgb(233, 233, 233);
+  height: 100%;
+  padding: 0 10px;
+  font-size: 15px;
+  width: 350px;
+  border-radius: 8px 0 0 8px;
+}
+.search-box button{
+  color: #fff;
+  font-size: 15px;
+  background: #fff;
+  height: 100%;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  border: none;
+}
+.search-box button:hover{
+  color: #fff;
+}
+.search-box button::after{
+  height: 100%;
+  width: 100%;
+  content: '';
+  background: rgb(63, 62, 62);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  transition: 0.3s;
+  border-radius: 0 8px 8px 0;
+}
 
+.search-box button:hover::after{
+  width: 100%;
+}
 
 /*-----Card Section------*/
-
-
 
 .cards{
     display: inline-block;
