@@ -127,7 +127,7 @@ li{
     background-color: whitesmoke;
     width: 22%;
     min-width: 190px;
-    min-height: 450px;
+    min-height: 430px;
     padding: 9px 10px;
     border: 1px solid #cce7d0;
     border-radius: 10px;
@@ -172,8 +172,8 @@ li{
     color: black;
     width: 100px;
     padding: 8px 0;
-    margin-top: 50px;
-    margin-left: 30px;
+    margin-top: 40px;
+    margin-left: 0px;
     text-align: center;
     border-radius: 3px;
     background-color: rgb(189, 125, 6);
@@ -189,7 +189,7 @@ li{
     color: black;
     width: 100px;
     padding: 8px 0;
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
     border-radius: 3px;
     border-color: rgb(189, 125, 6);

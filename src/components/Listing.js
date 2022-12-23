@@ -9,7 +9,6 @@ const Page = () => {
   const filterFunction = (item) => {
     axios.get("https://fakestoreapi.com/products/category/" + item).then((response) => {
       setProduct(response.data);
-      //console.log(response.data);
     });
   }
                
@@ -54,7 +53,7 @@ const Page = () => {
           </a>
         </li>
       </ul>
-  </div>
+    </div>
 
         <div className='logo'>
             <h2>
@@ -63,8 +62,9 @@ const Page = () => {
             </h2>
         </div>
         <div className='search-box'>
-          <input type="search" placeholder="Search here"></input>
-          <button>Search</button>
+          <input type="text" 
+          placeholder="Search Products"></input>
+          <button type="button" className='search-btn'>Search</button>
         </div>
     </nav>
     <div className="main">
@@ -79,7 +79,7 @@ const Page = () => {
                           <h1>{item.title}</h1>
                       </div>
                       <div className="price">
-                          <h3>{item.price}</h3>
+                          <h3>${item.price}</h3>
                       </div>
                         <button className="cart-btn">Add to Cart</button>
                         <button className="buy-btn">Buy Now</button>
