@@ -1,9 +1,9 @@
-import React from 'react'
-import Listing from "./components/Listing"
+import React from 'react';
+import Page from './pages/HomePage';
 
 const App = () => {
   return( 
-  <Listing />
+    <Page />
   );
 }
 
