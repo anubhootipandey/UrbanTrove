@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useContext }  from 'react';
+import { CartContext } from '../CartContext/CartContext';
 
 const ProductCard = ({ product }) => {
+  const { addToCart, removeFromCart, cart  } = useContext(CartContext);
+
+  const isInCart = cart.some(item => item.id === product.id);
+
   return (
     <div className="cards">
       <div className="image">
@@ -12,7 +17,15 @@ const ProductCard = ({ product }) => {
       <div className="price">
         <h3>${product.price}</h3>
       </div>
-      <button className="cart-btn">Add to Cart</button>
+      {isInCart ? (
+        <button className="cart-btn" onClick={() => removeFromCart(product.id)}>
+          Remove from Cart
+        </button>
+      ) : (
+        <button className="cart-btn" onClick={() => addToCart(product)}>
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 }

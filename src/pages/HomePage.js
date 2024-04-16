@@ -4,6 +4,7 @@ import Sidebar from "../components/Navbar/Sidebar";
 import ProductCard from "../components/ProductCard/ProductCard";
 import "./HomePage.css";
 import Header from "../components/Navbar/Header";
+import { CartProvider } from "../components/CartContext/CartContext";
 
 const HomePage = () => {
   const [state, setState] = useState({
@@ -11,6 +12,7 @@ const HomePage = () => {
     categories: [],
     searchInput: "",
     filteredProducts: [],
+    cartItems: [],
   });
 
   useEffect(() => {
@@ -50,16 +52,26 @@ const HomePage = () => {
     });
   };
 
+  const addToCart = (item) => {
+    setState((prevState) => ({
+      ...prevState,
+      cartItems: [...prevState.cartItems, item],
+    }));
+  };
+
+
   return (
-    <>
-      <Header searchInput={state.searchInput} handleSearchInput={handleSearchInput} />
+    <CartProvider>
+      <>
+      <Header searchInput={state.searchInput} handleSearchInput={handleSearchInput} cartItemCount={state.cartItems.length} />
       <Sidebar categories={state.categories} filterFunction={filterFunction} />
       <div className="main">
         {state.filteredProducts.map((item, index) => (
-          <ProductCard key={index} product={item} />
+          <ProductCard key={index} product={item} addToCart={addToCart} />
         ))}
       </div>
     </>
+    </CartProvider>
   );
 };
 
