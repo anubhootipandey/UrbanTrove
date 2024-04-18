@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000; /* Ensure that the header is above other content */
+    z-index: 1000; 
   }
   
   .header h2 {
@@ -38,6 +38,51 @@
   .search-box input[type="text"]:hover{
     padding: 10px;
   }
+
+  .cart-dropdown {
+    position: absolute;
+    top: calc(100% + 1px); 
+    right: 20px;
+    max-height: 100vh;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    overflow-y: scroll;
+  }
+  
+  .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item button {
+    margin-left: 5px;
+  }
+  
+  .cart-item button:first-child, button:last-child {
+    background-color: #135D66;
+    outline: none;
+    border: none;
+    padding: 5px;
+    color: #fff;
+  }
+  
   
   /* Sidebar styles */
 .sidenav {
@@ -101,7 +146,7 @@
   /* Main content styles */
   .main {
     margin-top: 40px;
-    margin-left: 220px; /* Adjust according to the width of sidebar */
+    margin-left: 220px; 
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
