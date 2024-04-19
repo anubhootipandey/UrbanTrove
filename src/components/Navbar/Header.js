@@ -20,13 +20,18 @@ const Header = ({ searchInput, handleSearchInput }) => {
     console.log("Removing item:", item);
   };
 
+  const handleLogoClick = () => {
+    // Reload the page
+    window.location.reload();
+  };
+
   //Todo: 1-To show the cart title and cart price in the dropdown 
   //2- Fix CSS in this code
   //3-Write buy and remove item functionality
 
   return (
     <div className="header">
-      <h2>
+      <h2 onClick={handleLogoClick}>
         <span>E-</span>
         <span>Shopping</span>
       </h2>

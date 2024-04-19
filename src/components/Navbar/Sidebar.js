@@ -3,9 +3,6 @@ import React from "react";
 const Sidebar = ({ categories, filterFunction }) => {
   return (
       <div className="sidenav">
-        <div className="logo">
-          <a href="#"></a>
-        </div>
         <ul className="mainNav">
           {categories.map((category, index) => (
             <li
