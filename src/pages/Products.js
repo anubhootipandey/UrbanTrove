@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { CartContext } from "../components/CartContext/CartContext";
+import Header from "../components/Navbar/Header";
 import Sidebar from "../components/Navbar/Sidebar";
 import ProductCard from "../components/ProductCard/ProductCard";
-import "./HomePage.css";
-import Header from "../components/Navbar/Header";
-import { CartProvider } from "../components/CartContext/CartContext";
+import '../App.css';
 
-const HomePage = () => {
+const Products = () => {
   const [state, setState] = useState({
     products: [],
     categories: [],
     searchInput: "",
     filteredProducts: [],
-    cartItems: [],
   });
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
@@ -31,6 +31,16 @@ const HomePage = () => {
     });
   }, []);
 
+  const filterFunction = (item) => {
+    axios.get("https://fakestoreapi.com/products/category/" + item).then((response) => {
+      setState((prevState) => ({
+        ...prevState,
+        products: response.data,
+        filteredProducts: response.data,
+      }));
+    });
+  };
+
   const handleSearchInput = (e) => {
     const value = e.target.value;
     setState((prevState) => ({
@@ -42,28 +52,9 @@ const HomePage = () => {
     }));
   };
 
-  const filterFunction = (item) => {
-    axios.get("https://fakestoreapi.com/products/category/" + item).then((response) => {
-      setState((prevState) => ({
-        ...prevState,
-        products: response.data,
-        filteredProducts: response.data,
-      }));
-    });
-  };
-
-  const addToCart = (item) => {
-    setState((prevState) => ({
-      ...prevState,
-      cartItems: [...prevState.cartItems, item],
-    }));
-  };
-
-
   return (
-    <CartProvider>
-      <>
-      <Header searchInput={state.searchInput} handleSearchInput={handleSearchInput} cartItemCount={state.cartItems.length} />
+    <>
+      <Header searchInput={state.searchInput} handleSearchInput={handleSearchInput} />
       <Sidebar categories={state.categories} filterFunction={filterFunction} />
       <div className="main">
         {state.filteredProducts.map((item, index) => (
@@ -71,8 +62,7 @@ const HomePage = () => {
         ))}
       </div>
     </>
-    </CartProvider>
   );
 };
 
-export default HomePage;
+export default Products;
