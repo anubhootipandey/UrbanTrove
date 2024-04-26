@@ -1,0 +1,140 @@
+/* Home */
+.banner {
+    background-color: #9da1a7;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 400px;
+  }
+ 
+  .banner h2 {
+    margin-top: 150px;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .banner p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .home-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .home-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .home-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  
+  
+  /*Signin*/
+  .signin-container {
+      max-width: 400px;
+      margin: 70px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .signin-container h2 {
+      margin-bottom: 20px;
+    }
+    
+    .signin-container form div {
+      margin-bottom: 15px;
+    }
+    
+    .signin-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .signin-container input[type="text"],
+    .signin-container input[type="password"] {
+      width: 380px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .signin-container button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .signin-container button:hover {
+      background-color: #6e6868;
+    }
+    
+    .signin-container a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    
+    .signin-container a:hover {
+      text-decoration: underline;
+    }
+    
+  
+    /*Signup */
+  .signup-container {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signup-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .signup-container form div {
+    margin-bottom: 15px;
+  }
+  
+  .signup-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .signup-container input[type="text"],
+  .signup-container input[type="password"] {
+    width: 480px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .signup-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .signup-container button:hover {
+    background-color: #6e6868;
+  }
+  

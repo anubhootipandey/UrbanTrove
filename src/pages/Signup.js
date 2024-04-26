@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import Header from "../components/Navbar/Header";
-import { Link } from "react-router-dom";
 import './styles.css';
 
-const Signin = ({ searchInput, handleSearchInput }) => {
+const Signup = ({ searchInput, handleSearchInput }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,16 +19,27 @@ const Signin = ({ searchInput, handleSearchInput }) => {
   return (
     <>
       <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
-      <div className="signin-container">
-        <h2>Sign In</h2>
+      <div className="signup-container">
+        <h2>Create Account</h2>
         <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              placeholder="Enter your name..."
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
           <div>
             <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
               value={username}
-              onChange={handleUsernameChange}
+              placeholder="Enter your username..."
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
@@ -45,18 +48,15 @@ const Signin = ({ searchInput, handleSearchInput }) => {
               type="password"
               id="password"
               value={password}
-              onChange={handlePasswordChange}
+              placeholder="Create password..."
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div>
-            Don't have a account?
-            <Link to="/signup">Create account</Link>
-          </div>
-          <button type="submit">Sign In</button>
+          <button type="submit">Signup</button>
         </form>
       </div>
     </>
   );
 };
 
-export default Signin;
+export default Signup;

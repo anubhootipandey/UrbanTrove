@@ -24,13 +24,16 @@ const Header = ({ searchInput, handleSearchInput }) => {
           <span>Shopping</span>
         </Link>
       </h2>
+      <div className="navigation-links">
+        <Link to="/about">About</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/contact">Contact</Link>
+      </div>
       <SearchBox value={searchInput} onChange={handleSearchInput} />
       <div className="cart-count" onClick={toggleCart}>
         You added {cart.length} items
       </div>
       <div className="navigation-links">
-        <Link to="/products">Products</Link>
-        <Link to="/contact">Contact</Link>
         <Link to="/signin">Sign In</Link>
       </div>
     </div>

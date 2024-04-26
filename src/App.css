@@ -1,95 +1,95 @@
 /* Header.css */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .header h2 a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .header .search-box {
-    margin-left: auto;
-    margin-right: 150px;
-  }
-  
-  .header .search-box input {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #ccc;
-  }
-  
-  .header .navigation-links a {
-    margin-left: 20px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  /* Sidebar.css */
-  .sidenav {
-    background-color: #f0f0f0;
-    padding: 4px;
-  }
-  
-  .mainNav {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .single-nav {
-    margin-bottom: 10px;
-  }
-  
-  .single-nav a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .single-nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* ProductCard.css */
-  .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-  
-  .cards .image img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .cards .title h1 {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  
-  .cards .price h3 {
-    margin-bottom: 10px;
-  }
-  
-  .cards .cart-btn {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .cards .cart-btn:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.header h2 a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 100px;
+}
+
+.header .search-box {
+  margin-left: auto;
+  margin-right: 150px;
+}
+
+.header .search-box input {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+}
+
+.header .navigation-links a {
+  margin-left: 50px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Header2.css */
+.sidenav {
+  background-color: #f0f0f0;
+  padding: 4px;
+}
+
+.mainNav {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-nav {
+  margin-bottom: 10px;
+}
+
+.single-nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+.single-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ProductCard.css */
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.cards .image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.cards .title h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cards .price h3 {
+  margin-bottom: 10px;
+}
+
+.cards .cart-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cards .cart-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
