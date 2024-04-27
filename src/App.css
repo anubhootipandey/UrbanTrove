@@ -1,4 +1,5 @@
-/* Header.css */
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +39,7 @@
 .cart-modal {
   position: fixed;
   top: 0;
-  right: -350px; /* Initially hidden */
+  right: -350px; 
   width: 350px;
   height: 100%;
   background-color: #fff;
@@ -49,7 +50,7 @@
 }
 
 .cart-modal.show {
-  right: 0; /* Show sidebar modal */
+  right: 0; 
 }
 
 .cart-actions{
@@ -100,7 +101,7 @@
 }
 
 
-/* Header2.css */
+/* Header2*/
 .nav {
   background-color: #f0f0f0;
   padding: 4px;
@@ -126,7 +127,7 @@
   text-decoration: underline;
 }
 
-/* ProductCard.css */
+/* ProductCard */
 .cards {
   display: flex;
   flex-direction: column;
@@ -202,4 +203,8 @@
 
 .contact-form button:hover {
   background-color: #555;
+}
+
+@media screen and (max-width: 768px) {
+  
 }

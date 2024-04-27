@@ -4,7 +4,7 @@ import SearchBox from "../SearchBox/SearchBox";
 import { CartContext } from "../CartContext/CartContext";
 
 const Header = ({ searchInput, handleSearchInput }) => {
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
   const [cartCount, setCartCount] = useState(0);
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -31,7 +31,8 @@ const Header = ({ searchInput, handleSearchInput }) => {
     window.location.reload();
   };
 
-  const handleRemoveFromCart = (itemToRemove) => {
+  const handleRemoveFromCart = (productId) => {
+    removeFromCart(productId);
   };
 
   const handleBuyNow = () => {
@@ -68,7 +69,7 @@ const Header = ({ searchInput, handleSearchInput }) => {
                 <span>Price: ${item.price}</span>
               </div>
               <div className="buttons">
-                <button onClick={() => handleRemoveFromCart(item)}>
+                <button onClick={() => handleRemoveFromCart(item.id)}>
                   Remove
                 </button>
                 <button onClick={handleBuyNow}>Buy</button>
