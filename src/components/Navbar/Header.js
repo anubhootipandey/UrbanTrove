@@ -9,7 +9,6 @@ const Header = ({ searchInput, handleSearchInput }) => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
-  // Load cart count from local storage on component mount
   useEffect(() => {
     const storedCartCount = localStorage.getItem("cartCount");
     if (storedCartCount) {
@@ -17,11 +16,10 @@ const Header = ({ searchInput, handleSearchInput }) => {
     }
   }, []);
 
-  // Update cart count and items whenever cart changes
   useEffect(() => {
     const count = cart.length;
     setCartCount(count);
-    localStorage.setItem("cartCount", count.toString()); // Store as string
+    localStorage.setItem("cartCount", count.toString()); 
     setCartItems(cart);
   }, [cart]);
 
@@ -30,17 +28,13 @@ const Header = ({ searchInput, handleSearchInput }) => {
   };
 
   const handleLogoClick = () => {
-    // Reload the page
     window.location.reload();
   };
 
   const handleRemoveFromCart = (itemToRemove) => {
-    // Remove item from cart
-    // Implement your logic here
   };
 
   const handleBuyNow = () => {
-    // Implement buy now functionality
   };
 
   return (

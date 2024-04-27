@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { CartContext } from "../components/CartContext/CartContext";
 import Header from "../components/Navbar/Header";
-import Sidebar from "../components/Navbar/Sidebar";
+import Header2 from "../components/Navbar/Header2";
 import ProductCard from "../components/ProductCard/ProductCard";
 import '../App.css';
 
@@ -55,7 +55,7 @@ const Products = () => {
   return (
     <>
       <Header searchInput={state.searchInput} handleSearchInput={handleSearchInput} />
-      <Sidebar categories={state.categories} filterFunction={filterFunction} />
+      <Header2 categories={state.categories} filterFunction={filterFunction} />
       <div className="main">
         {state.filteredProducts.map((item, index) => (
           <ProductCard key={index} product={item} addToCart={addToCart} />

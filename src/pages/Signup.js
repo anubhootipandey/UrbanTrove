@@ -11,7 +11,6 @@ const Signup = ({ searchInput, handleSearchInput }) => {
     e.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);
-    // Reset form fields
     setUsername("");
     setPassword("");
   };

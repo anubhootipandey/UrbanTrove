@@ -137,4 +137,53 @@
   .signup-container button:hover {
     background-color: #6e6868;
   }
+
+
+  /* Media Queries for Home */
+@media screen and (max-width: 768px) {
+  .banner {
+    height: auto;
+    padding: 40px 20px;
+  }
+  
+  .banner h2 {
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+  }
+  
+  .home-content {
+    padding: 20px 10px;
+  }
+}
+
+/* Media Queries for Signin */
+@media screen and (max-width: 768px) {
+  .signin-container {
+    max-width: 100%;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .signin-container input[type="text"],
+  .signin-container input[type="password"] {
+    width: 90%;
+  }
+}
+
+/* Media Queries for Signup */
+@media screen and (max-width: 768px) {
+  .signup-container {
+    max-width: 100%;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .signup-container input[type="text"],
+  .signup-container input[type="password"] {
+    width: 90%;
+  }
+}
   

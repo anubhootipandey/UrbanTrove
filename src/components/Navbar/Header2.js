@@ -1,8 +1,8 @@
 import React from "react";
 
-const Sidebar = ({ categories, filterFunction }) => {
+const Header2 = ({ categories, filterFunction }) => {
   return (
-      <div className="sidenav">
+      <div className="nav">
         <ul className="mainNav">
           {categories.map((category, index) => (
             <li
@@ -20,4 +20,4 @@ const Sidebar = ({ categories, filterFunction }) => {
   );
 };
 
-export default Sidebar;
+export default Header2;
