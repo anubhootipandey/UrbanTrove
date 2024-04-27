@@ -11,7 +11,6 @@
 .header h2 a {
   color: #fff;
   text-decoration: none;
-  margin-right: 100px;
 }
 
 .header .search-box {
@@ -26,10 +25,80 @@
 }
 
 .header .navigation-links a {
-  margin-left: 50px;
+  margin-left: 60px;
   color: #fff;
   text-decoration: none;
 }
+
+.cart-count {
+  cursor: pointer;
+}
+
+/* CSS for sidebar modal */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Initially hidden */
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.cart-modal.show {
+  right: 0; /* Show sidebar modal */
+}
+
+.cart-actions{
+  left: 50px;
+}
+
+.cart-modal h3{
+  color: #333;
+}
+
+.cart-item {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.cart-item div {
+  flex: 1;
+}
+
+.cart-item span {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.cart-item .buttons button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cart-item .buttons button:hover {
+  background-color: #f0f0f0;
+}
+
 
 /* Header2.css */
 .sidenav {
