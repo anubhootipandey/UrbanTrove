@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBox from "../SearchBox/SearchBox";
 import { CartContext } from "../CartContext/CartContext";
 
 const Header = ({ searchInput, handleSearchInput }) => {
   const { cart } = useContext(CartContext);
-  const navigate = useNavigate();
   const [cartCount, setCartCount] = useState(0);
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
