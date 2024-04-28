@@ -24,7 +24,6 @@ const Contact = ({ searchInput, handleSearchInput }) => {
       <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
       <div className="contact-container">
         <h2>Contact Us</h2>
-        <p>This is the contact page.</p>
         <form className="contact-form" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name:</label>

@@ -12,17 +12,14 @@ const Home = ({ searchInput, handleSearchInput }) => {
       <div className="home-content"> 
       <h2>Featured Products</h2>
         <div className="card-container">
-          {/* Lorem Ipsum Card 1 */}
           <div className="card">
             <h3>Lorem Ipsum Product 1</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et maximus massa.</p>
           </div>
-          {/* Lorem Ipsum Card 2 */}
           <div className="card">
             <h3>Lorem Ipsum Product 2</h3>
             <p>Integer consequat lorem eget velit ultrices, eu commodo nisl tempus.</p>
           </div>
-          {/* Lorem Ipsum Card 3 */}
           <div className="card">
             <h3>Lorem Ipsum Product 3</h3>
             <p>Phasellus sagittis mi eget neque volutpat, vitae suscipit orci ultrices.</p>
