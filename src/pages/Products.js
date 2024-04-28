@@ -61,6 +61,9 @@ const Products = () => {
           <ProductCard key={index} product={item} addToCart={addToCart} />
         ))}
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </>
   );
 };

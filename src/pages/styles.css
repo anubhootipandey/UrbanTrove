@@ -34,6 +34,35 @@
     line-height: 1.6;
   }
   
+  .home-content {
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    flex: 1;
+  }
+  
+  .card h3 {
+    margin-top: 0;
+  }
+  
+  .card p {
+    margin-bottom: 0;
+  }
+  
   
   
   /*Signin*/
@@ -138,6 +167,14 @@
     background-color: #6e6868;
   }
 
+  /*Footer*/
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
 
   /* Media Queries for Home */
 @media screen and (max-width: 768px) {

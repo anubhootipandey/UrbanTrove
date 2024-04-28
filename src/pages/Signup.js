@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Header from "../components/Navbar/Header";
 import './styles.css';
+import { useNavigate } from "react-router-dom";
 
 const Signup = ({ searchInput, handleSearchInput }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +15,7 @@ const Signup = ({ searchInput, handleSearchInput }) => {
     console.log("Password:", password);
     setUsername("");
     setPassword("");
+    navigate('/signin');
   };
 
   return (
@@ -54,6 +57,9 @@ const Signup = ({ searchInput, handleSearchInput }) => {
           <button type="submit">Signup</button>
         </form>
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </>
   );
 };

@@ -6,6 +6,9 @@ const About = ({ searchInput, handleSearchInput }) => {
     <>
         <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
         <h2>Welcome to About section</h2>
+        <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </>
   )
 }

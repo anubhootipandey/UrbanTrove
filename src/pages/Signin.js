@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Header from "../components/Navbar/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './styles.css';
 
 const Signin = ({ searchInput, handleSearchInput }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -22,6 +23,7 @@ const Signin = ({ searchInput, handleSearchInput }) => {
     // Reset form fields
     setUsername("");
     setPassword("");
+    navigate('/products');
   };
 
   return (
@@ -55,6 +57,9 @@ const Signin = ({ searchInput, handleSearchInput }) => {
           <button type="submit">Sign In</button>
         </form>
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </>
   );
 };

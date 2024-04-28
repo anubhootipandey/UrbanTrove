@@ -10,9 +10,28 @@ const Home = ({ searchInput, handleSearchInput }) => {
         <p>Discover amazing deals on a wide range of products.</p>
       </div>
       <div className="home-content"> 
-        <h2>Home Us</h2>
-        <p>This is the Home page.</p>
+      <h2>Featured Products</h2>
+        <div className="card-container">
+          {/* Lorem Ipsum Card 1 */}
+          <div className="card">
+            <h3>Lorem Ipsum Product 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et maximus massa.</p>
+          </div>
+          {/* Lorem Ipsum Card 2 */}
+          <div className="card">
+            <h3>Lorem Ipsum Product 2</h3>
+            <p>Integer consequat lorem eget velit ultrices, eu commodo nisl tempus.</p>
+          </div>
+          {/* Lorem Ipsum Card 3 */}
+          <div className="card">
+            <h3>Lorem Ipsum Product 3</h3>
+            <p>Phasellus sagittis mi eget neque volutpat, vitae suscipit orci ultrices.</p>
+          </div>
+        </div>
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </>
   );
 };

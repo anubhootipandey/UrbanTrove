@@ -61,6 +61,9 @@ const Contact = ({ searchInput, handleSearchInput }) => {
           <button type="submit">Submit</button>
         </form>
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Your Online Store</p>
+      </footer>
     </div>
   );
 };
