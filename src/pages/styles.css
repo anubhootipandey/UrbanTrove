@@ -63,7 +63,6 @@
     margin-bottom: 0;
   }
 
-
   /*About*/
   .about-content {
     max-width: 800px;
@@ -80,7 +79,6 @@
     line-height: 1.6;
     margin-bottom: 15px;
   }
-  
   
   
   /*Signin*/
@@ -209,6 +207,10 @@
   
   .home-content {
     padding: 20px 10px;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 

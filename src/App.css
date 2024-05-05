@@ -23,6 +23,8 @@
   padding: 8px;
   width: 200px;
   border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
 .header .navigation-links a {
