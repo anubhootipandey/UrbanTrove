@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBox from "../SearchBox/SearchBox";
 import { CartContext } from "../CartContext/CartContext";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Header = ({ searchInput, handleSearchInput }) => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -39,48 +39,57 @@ const Header = ({ searchInput, handleSearchInput }) => {
   };
 
   return (
-    <div className="header">
-      <h2 onClick={handleLogoClick}>
-        <Link to="/">
-          <span>E-</span>
-          <span>Shopping</span>
-        </Link>
-      </h2>
-      <div className="navigation-links">
-        <Link to="/about">About</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/contact">Contact</Link>
-      </div>
-      <SearchBox value={searchInput} onChange={handleSearchInput} />
-      <div className="cart-count" onClick={toggleCartModal}>
-        You added {cartCount} items
-      </div>
-      <div className={`cart-modal ${showCartModal ? "show" : ""}`}>
-      <div className="cart-actions">
-          <button onClick={toggleCartModal}>Close</button>
-        </div>
-        <h3>Cart Items</h3>
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.title} />
-              <div>
-                <span>{item.title}</span>
-                <span>Price: ${item.price}</span>
+    <div className="bg-blue-100">
+      <nav className="w-full h-14 bg-blue-900 flex justify-between items-center px-6 py-8 md:px-4">
+        <h1 className="text-2xl text-white font-bold cursor-pointer" onClick={handleLogoClick}>
+          <Link to="/">FakeShop</Link>
+        </h1>
+        <ul className="md:flex hidden text-blue-300 font-semibold">
+          <li className="mx-4 cursor-pointer hover:underline hover:text-white"><Link to="/about">About</Link></li>
+          <li className="mx-4 cursor-pointer hover:underline hover:text-white"><Link to="/products">Products</Link></li>
+          <li className="mx-4 cursor-pointer hover:underline hover:text-white"><Link to="/contact">Contact</Link></li>
+        </ul>
+        <SearchBox value={searchInput} onChange={handleSearchInput} />
+        <div className="relative">
+          <button className="text-white" onClick={toggleCartModal}>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M4.408 3.408A2 2 0 0 1 6.92 2h6.16a2 2 0 0 1 1.512.692l3.447 4.646A2 2 0 0 1 18 9.764V17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.764a2 2 0 0 1 .08-.646L4.408 3.408zM7.414 4 5.862 8h8.276l-1.553-4H7.414z" clipRule="evenodd" />
+            </svg>
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none bg-red-500 text-white rounded-full">{cartCount}</span>
+            )}
+          </button>
+          {showCartModal && (
+            <div className="absolute right-0 mt-12 w-64 bg-white shadow-lg rounded-lg overflow-hidden z-10">
+              <div className="flex justify-between items-center px-4 py-2 bg-gray-200">
+                <h2 className="text-lg font-semibold">Cart Items</h2>
+                <button onClick={toggleCartModal}>Close</button>
               </div>
-              <div className="buttons">
-                <button onClick={() => handleRemoveFromCart(item.id)}>
-                  Remove
-                </button>
-                <button onClick={handleBuyNow}>Buy</button>
+              <div className="px-4 py-2">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="flex items-center justify-between py-2">
+                    <img src={item.image} alt={item.title} className="w-12 h-12 object-cover rounded" />
+                    <div className="flex flex-col ml-2">
+                      <span>{item.title}</span>
+                      <span>Price: ${item.price}</span>
+                    </div>
+                    <div>
+                      <button className="text-red-500" onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+                      <button className="text-blue-500" onClick={handleBuyNow}>Buy</button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          )}
         </div>
-      </div>
-      <div className="navigation-links">
-        <Link to="/signin">Sign In</Link>
-      </div>
+        <button className="hidden md:block px-2 py-1.5 font-semibold bg-blue-600 text-white rounded cursor-pointer hover:text-blue-900 hover:bg-indigo-600 hover:font-semibold">
+          <Link to="/signin">Sign In</Link>
+        </button>
+        <div className="md:hidden">
+          <button className="text-4xl text-blue-200">&#8801;</button>
+        </div>
+      </nav>
     </div>
   );
 };
