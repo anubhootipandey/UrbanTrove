@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="flex flex-col md:flex-row md:justify-between">
         <div className="mb-8 md:mb-0 md:mr-8">
             <img className="w-40 h-16 mb-4" src="https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
-            <p className="my-2">Email us: adgag123@gan.vim</p>
+            <p className="my-2">Email us: fakebazaar123@gan.cim</p>
             <img className="w-40 h-32" src="https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
         </div>
         <div className="mb-8 md:mb-0 md:mr-8">

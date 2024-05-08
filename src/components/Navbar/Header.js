@@ -46,7 +46,7 @@ const Header = ({ searchInput, handleSearchInput }) => {
     <div className="bg-blue-100">
       <nav className="w-full h-14 bg-blue-900 flex justify-between items-center px-6 py-8 md:px-4">
         <h1 className="text-2xl text-white font-bold cursor-pointer" onClick={handleLogoClick}>
-          <Link to="/">FakeShop</Link>
+          <Link to="/">FakeBazaar</Link>
         </h1>
         {/* Desktop menu */}
         <ul className="md:flex hidden text-blue-300 font-semibold">
