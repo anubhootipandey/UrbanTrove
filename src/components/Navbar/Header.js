@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import { CartContext } from "../CartContext/CartContext";
 import SearchBox from "../SearchBox/SearchBox";
 
@@ -9,6 +9,7 @@ const Header = ({ searchInput, handleSearchInput }) => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [showMobileMenu, setShowMobileMenu] = useState(false); // State for managing mobile menu visibility
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
   useEffect(() => {
     const storedCartCount = localStorage.getItem("cartCount");
@@ -36,7 +37,10 @@ const Header = ({ searchInput, handleSearchInput }) => {
     removeFromCart(productId);
   };
 
-  const handleBuyNow = () => {};
+  const handleBuyNow = () => {
+    // Navigate to transaction details page and pass cart items as state
+    navigate("/transaction-details", { state: { cartItems: cart } });
+  };
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
