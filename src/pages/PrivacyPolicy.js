@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Navbar/Header";
 import Footer from "../components/Footer/Footer";
 
-const PrivacyPolicy = ({ searchInput, handleSearchInput }) => {
+const PrivacyPolicy = () => {
   // State to manage the visibility of the privacy policy text
   const [showPolicy, setShowPolicy] = useState(false);
 
@@ -13,7 +13,7 @@ const PrivacyPolicy = ({ searchInput, handleSearchInput }) => {
 
   return (
     <>
-      <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
+      <Header />
       <div className="container mx-auto py-8">
         <div className="w-full h-auto flex flex-wrap flex-col items-center">
           <p className="text-indigo-800 font-bold text-3xl md:text-4xl text-center">

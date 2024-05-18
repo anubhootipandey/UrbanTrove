@@ -123,10 +123,6 @@ const Header = ({ searchInput, handleSearchInput }) => {
             <Link to="/signin" className="my-2 hover:text-blue-300">
               Sign In
             </Link>
-            {/* Close mobile menu button */}
-            <button className="text-white absolute top-0 right-0 mt-2 mr-2" onClick={toggleMobileMenu}>
-              &#10005;
-            </button>
           </div>
         )}
         <button className="hidden md:block px-2 py-1.5 font-semibold bg-blue-600 text-white rounded cursor-pointer hover:text-blue-900 hover:bg-indigo-600 hover:font-semibold">

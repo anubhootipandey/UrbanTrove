@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Navbar/Header";
 import Footer from "../components/Footer/Footer";
 
-const Signin = ({ searchInput, handleSearchInput }) => {
+const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ const Signin = ({ searchInput, handleSearchInput }) => {
     e.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);
-    // Reset form fields
     setUsername("");
     setPassword("");
     navigate('/products');
@@ -28,7 +27,7 @@ const Signin = ({ searchInput, handleSearchInput }) => {
 
   return (
     <>
-      <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
+      <Header />
       <div className="bg-blue-50 h-auto w-full flex flex-wrap flex-col items-center p-10">
         <div className="w-full h-auto flex flex-wrap flex-col items-center">
           <p className="text-indigo-800 font-bold text-3xl md:text-4xl text-center">

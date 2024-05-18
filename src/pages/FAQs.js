@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Navbar/Header';
 import Footer from '../components/Footer/Footer';
 
-const FAQs = ({ searchInput, handleSearchInput }) => {
+const FAQs = () => {
   // Define FAQ items with questions and answers
   const faqs = [
     { question: 'Question 1?', answer: 'Answer 1.' },
@@ -21,7 +21,7 @@ const FAQs = ({ searchInput, handleSearchInput }) => {
 
   return (
     <>
-      <Header searchInput={searchInput} handleSearchInput={handleSearchInput} />
+      <Header />
       <div className="container mx-auto py-8">
       <div className="w-full h-auto flex flex-wrap flex-col items-center">
         <p className="text-indigo-800 font-bold text-3xl md:text-4xl text-center">
