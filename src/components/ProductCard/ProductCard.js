@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import { CartContext } from "../CartContext/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { addToCart, removeFromCart, cart } = useContext(CartContext);
 
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
+
   const isInCart = cart.some((item) => item.id === product.id);
 
   return (
-    <div className="bg-blue-50 h-auto w-100 flex flex-wrap flex-col items-center text-center p-10">
+    <div className="bg-blue-50 h-auto w-100 flex flex-wrap flex-col items-center text-center p-10" onClick={handleCardClick}>
       <div className="w-[90%] h-auto flex flex-wrap justify-around">
         <div className="w-64 h-64 rounded-xl bg-white flex flex-col items-center mb-12 border-2 p-2">
           <img className="w-24 h-24" src={product.image} alt={product.title} />

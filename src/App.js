@@ -7,9 +7,9 @@ import Products from './pages/Products';
 import Contact from './pages/Contact';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
-import TransactionDetails from './pages/TransactionDetails';
 import FAQs from './pages/FAQs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ProductDetails from './pages/ProductDetails';
 
 const App = () => {
   return (
@@ -22,9 +22,9 @@ const App = () => {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/transaction-details" element={<TransactionDetails />} />
           <Route exact path="/faqs" element={<FAQs />} />
           <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </Router>
     </CartProvider>
