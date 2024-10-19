@@ -1,50 +1,50 @@
 import React from 'react';
-import { Box, Typography, TextField, Button } from '@mui/material';
 
 const Contact = () => {
   return (
-    <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" gutterBottom>Contact Us</Typography>
-      <TextField fullWidth label="Name" margin="normal" 
-      sx={{
-        '& .MuiOutlinedInput-root': {
-          '&:hover fieldset': {
-            borderColor: '#A68DAD',
-          },
-          '&.Mui-focused fieldset': {
-            borderColor: '#A68DAD',
-          },
-        },
-        '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-      }}
-      />
-      <TextField fullWidth label="Email" margin="normal"
-      sx={{
-        '& .MuiOutlinedInput-root': {
-          '&:hover fieldset': {
-            borderColor: '#A68DAD',
-          },
-          '&.Mui-focused fieldset': {
-            borderColor: '#A68DAD',
-          },
-        },
-        '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-      }}
-       />
-      <TextField fullWidth label="Message" margin="normal" multiline rows={4} 
-      sx={{
-          '& .MuiOutlinedInput-root': {
-            '&:hover fieldset': {
-              borderColor: '#A68DAD',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: '#A68DAD',
-            },
-          },
-          '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-        }} />
-      <Button variant="contained" sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' }, fontSize: '0.875rem' }}>Submit</Button>
-    </Box>
+    <div className="p-6 max-w-screen-md mx-auto">
+      <h1 className="text-3xl font-semibold mb-6">Contact Us</h1>
+      
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="name">
+          Name
+        </label>
+        <input 
+          type="text" 
+          id="name" 
+          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#A68DAD] focus:border-transparent"
+          placeholder="Enter your name"
+        />
+      </div>
+      
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="email">
+          Email
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#A68DAD] focus:border-transparent"
+          placeholder="Enter your email"
+        />
+      </div>
+      
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="message">
+          Message
+        </label>
+        <textarea 
+          id="message" 
+          rows="4" 
+          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#A68DAD] focus:border-transparent"
+          placeholder="Enter your message"
+        />
+      </div>
+
+      <button className="bg-[#A68DAD] text-white px-6 py-2 rounded hover:bg-[#9279A1] text-sm transition">
+        Submit
+      </button>
+    </div>
   );
 };
 

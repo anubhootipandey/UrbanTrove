@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, Button, Card, CardContent, CardMedia, Select, MenuItem, FormControl, InputLabel, IconButton, Stack, Rating } from '@mui/material';
-import { AddCircle, RemoveCircle } from '@mui/icons-material';
 import { useCart } from './CartContext';
+import { AddCircle, RemoveCircle } from '@mui/icons-material';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -45,74 +44,70 @@ const ProductDetail = () => {
   };
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <div className="p-4 md:p-8">
       {product && (
-        <Card sx={{ display: 'flex', marginBottom: 2 }}>
-          <CardMedia
-            component="img"
-            image={product.image}
+        <div className="flex flex-col md:flex-row items-start mb-4 bg-white rounded-lg shadow-lg">
+          <img
+            src={product.image}
             alt={product.title}
-            sx={{ width: 300, objectFit: 'cover' }}
+            className="w-full md:w-1/3 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
           />
-          <CardContent sx={{ flex: 1 }}>
-            <Typography variant="h4" gutterBottom>{product.title}</Typography>
-            <Typography variant="h6" gutterBottom>${product.price}</Typography>
-            <Typography variant="body1" gutterBottom>{product.description}</Typography>
+          <div className="flex-1 p-6">
+            <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
+            <p className="text-xl font-semibold mb-2">${product.price}</p>
+            <p className="text-gray-700 mb-4">{product.description}</p>
 
-            <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
-              <FormControl sx={{ 
-                '& .MuiOutlinedInput-root': {
-            '&:hover fieldset': {
-              borderColor: '#A68DAD',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: '#A68DAD',
-            },
-          },
-          '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' },
-                minWidth: 120, 
-                marginRight: 2 
-                }}>
-                <InputLabel id="size-label">Size</InputLabel>
-                <Select
-                  labelId="size-label"
-                  id="size"
+            <div className="flex items-center mb-4">
+              <div className="mr-4">
+                <label className="block text-gray-700 font-semibold mb-1">Size</label>
+                <select
                   value={size}
                   onChange={handleSizeChange}
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
-                  <MenuItem value="S">S</MenuItem>
-                  <MenuItem value="M">M</MenuItem>
-                  <MenuItem value="L">L</MenuItem>
-                  <MenuItem value="XL">XL</MenuItem>
-                </Select>
-              </FormControl>
+                  <option value="">Select Size</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
 
-              <Typography variant="body1" sx={{ marginRight: 2 }}>Quantity:</Typography>
-              <IconButton onClick={handleDecrement} size="small">
-                <RemoveCircle />
-              </IconButton>
-              <Typography variant="body1">{quantity}</Typography>
-              <IconButton onClick={handleIncrement} size="small">
-                <AddCircle />
-              </IconButton>
-            </Box>
+              <div className="flex items-center">
+                <label className="mr-2 text-gray-700 font-semibold">Quantity:</label>
+                <button
+                  onClick={handleDecrement}
+                  className="p-1 border border-gray-300 rounded-full hover:bg-gray-100"
+                >
+                  <RemoveCircle className="w-5 h-5 text-gray-500" />
+                </button>
+                <span className="mx-2">{quantity}</span>
+                <button
+                  onClick={handleIncrement}
+                  className="p-1 border border-gray-300 rounded-full hover:bg-gray-100"
+                >
+                  <AddCircle className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+            </div>
 
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ marginTop: 2 }}>
-              <Rating name={`rating-${product.id}`} value={Math.floor(Math.random() * 5) + 1} readOnly />
-              <Typography variant="body2" color="textSecondary" sx={{ fontSize: '0.75rem' }}>({Math.floor(Math.random() * 100) + 1})</Typography> {/* Random count */}
-            </Stack>
+            <div className="flex items-center mb-4">
+              <div className="flex items-center">
+                <span className="text-yellow-500">⭐️⭐️⭐️⭐️⭐️</span> 
+                <p className="ml-2 text-sm text-gray-500">(100 reviews)</p>
+              </div>
+            </div>
 
-            <Button
+            <button
               onClick={handleAddRemoveCart}
-              variant="contained"
-              sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' }, marginTop: 2 }}
+              className="bg-[#A68DAD] text-white px-4 py-2 rounded-lg hover:bg-[#8a778f] transition"
             >
               {isInCart(product) ? 'Remove from Cart' : 'Add to Cart'}
-            </Button>
-          </CardContent>
-        </Card>
+            </button>
+          </div>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Grid, Card, CardContent, CardMedia, Typography, Button, TextField, Select, MenuItem, InputLabel, Rating, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
+import { Rating } from '@mui/material'; // Retained for Rating component functionality
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -66,61 +66,54 @@ const Products = () => {
   };
 
   return (
-    <Box sx={{ padding: 3 }}>
-      <Box sx={{ marginBottom: 3, display: 'flex', alignItems: 'center' }}>
-        <TextField
-          label="Search Products"
-          variant="outlined"
+    <div className="p-6">
+      <div className="mb-6 flex flex-col md:flex-row items-center">
+        <input
+          type="text"
+          placeholder="Search Products"
           onChange={handleSearch}
-          sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-            '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD', marginRight: 2, width: "700px" }
-           }} 
+          className="border-2 border-gray-300 focus:border-[#A68DAD] focus:ring-[#A68DAD] rounded-lg py-2 px-4 w-full md:w-2/3 mb-4 md:mb-0"
         />
-        <InputLabel sx={{ marginRight: 2 }}>Category:</InputLabel>
-        <Select
+        <label className="md:ml-4 mb-2 md:mb-0 md:mr-2">Category:</label>
+        <select
           value={selectedCategory}
           onChange={handleCategoryChange}
-          variant="outlined"
-          style={{ minWidth: 120 }}
+          className="border-2 border-gray-300 rounded-lg p-2 w-full md:w-1/3"
         >
-          <MenuItem value="">All</MenuItem>
+          <option value="">All</option>
           {categories.map(category => (
-            <MenuItem key={category} value={category}>{category}</MenuItem>
+            <option key={category} value={category}>{category}</option>
           ))}
-        </Select>
-      </Box>
+        </select>
+      </div>
 
-      <Grid container spacing={2}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {filteredProducts.map((product) => (
-          <Grid item key={product.id} xs={12} sm={6} md={4}>
-            <Card sx={{ background: '#F0ECE3', height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
-              <CardMedia
-                component="img"
-                image={product.image}
-                alt={product.title}
-                sx={{ height: 250 }}
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h6" sx={{ fontSize: '1rem' }}>{product.title}</Typography>
-                <Typography variant="body2" color="textSecondary" sx={{ fontSize: '0.875rem', marginBottom: 1 }}>${product.price}</Typography>
-                <Stack direction="row" spacing={1} sx={{ marginBottom: 1 }}>
-                  <Rating name={`rating-${product.id}`} value={product.rating} readOnly />
-                  <Typography variant="body2" color="textSecondary" sx={{ fontSize: '0.75rem', marginLeft: 1 }}>({Math.floor(Math.random() * 100) + 1})</Typography> {/* Random count */}
-                </Stack>
-                <Button component={Link} to={`/products/${product.id}`} variant="contained" sx={{ backgroundColor: '#A68DAD', '&:hover': { backgroundColor: '#9279A1' }, fontSize: '0.845rem' }}>View Details</Button>
-                <Button
+          <div key={product.id} className="bg-gray-100 rounded-lg shadow-md transform transition-transform hover:scale-105 flex flex-col">
+            <img src={product.image} alt={product.title} className="h-64 object-cover rounded-t-lg" />
+            <div className="p-4 flex flex-col flex-grow">
+              <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+              <p className="text-gray-600 text-sm mb-2">${product.price}</p>
+              <div className="flex items-center mb-2">
+                <Rating name={`rating-${product.id}`} value={product.rating} readOnly />
+                <p className="text-gray-500 text-xs ml-2">({Math.floor(Math.random() * 100) + 1})</p>
+              </div>
+              <div className="flex space-x-2 mt-auto">
+                <Link to={`/products/${product.id}`}>
+                  <button className="bg-[#A68DAD] hover:bg-[#9279A1] text-white text-sm font-semibold py-2 px-4 rounded-lg">View Details</button>
+                </Link>
+                <button
                   onClick={() => handleToggleCart(product)}
-                  variant="contained"
-                  sx={{ background: '#C7B198', '&:hover': { backgroundColor: '#9279A1' }, color: '#F0ECE3', marginLeft: 1, fontSize: '0.845rem' }}
+                  className={`text-sm font-semibold py-2 px-4 rounded-lg ${isInCart(product) ? 'bg-[#C7B198] text-white hover:bg-[#9279A1]' : 'bg-[#A68DAD] text-white hover:bg-[#9279A1]'}`}
                 >
                   {isInCart(product) ? 'Remove from Cart' : 'Add to Cart'}
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+                </button>
+              </div>
+            </div>
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </div>
   );
 };
 

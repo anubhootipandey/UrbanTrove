@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Tabs, Tab, Box } from '@mui/material';
 
 const SignInSignUpModal = ({ open, onClose }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabChange = (event, newValue) => {
+  const handleTabChange = (newValue) => {
     setActiveTab(newValue);
   };
 
@@ -17,98 +16,101 @@ const SignInSignUpModal = ({ open, onClose }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>
-        <Tabs value={activeTab} onChange={handleTabChange} centered>
-          <Tab label="Sign In" />
-          <Tab label="Sign Up" />
-        </Tabs>
-      </DialogTitle>
-      <DialogContent>
-        {activeTab === 0 && (
-          <Box sx={{ mt: 2 }}>
-            <TextField
-              fullWidth
-              label="Email"
-              type="email"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-            <TextField
-              fullWidth
-              label="Password"
-              type="password"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-          </Box>
-        )}
-        {activeTab === 1 && (
-          <Box sx={{ mt: 2 }}>
-            <TextField
-              fullWidth
-              label="Name"
-              type="text"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              type="email"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-            <TextField
-              fullWidth
-              label="Password"
-              type="password"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-            <TextField
-              fullWidth
-              label="Confirm Password"
-              type="password"
-              margin="normal"
-              variant="outlined"
-              sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-              '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-             }} 
-            />
-          </Box>
-        )}
-      </DialogContent>
-      <DialogActions>
-        {activeTab === 0 ? (
-          <Button onClick={handleSignIn} sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' } }} variant="contained">
-            Sign In
-          </Button>
-        ) : (
-          <Button onClick={handleSignUp} sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' } }} variant="contained">
-            Sign Up
-          </Button>
-        )}
-        <Button onClick={onClose} sx={{ borderColor: '#A68DAD', color : '#D0A2F7' }} variant="outlined">
-          Cancel
-        </Button>
-      </DialogActions>
-    </Dialog>
+    <>
+      {open && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg w-full max-w-lg mx-auto p-6 sm:max-w-md sm:p-8 shadow-lg">
+
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={() => handleTabChange(0)}
+                className={`text-lg font-semibold px-4 py-2 rounded-t-md transition-colors ${
+                  activeTab === 0
+                    ? 'border-b-2 border-[#A68DAD] text-[#A68DAD]'
+                    : 'text-gray-500'
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => handleTabChange(1)}
+                className={`text-lg font-semibold px-4 py-2 rounded-t-md transition-colors ${
+                  activeTab === 1
+                    ? 'border-b-2 border-[#A68DAD] text-[#A68DAD]'
+                    : 'text-gray-500'
+                }`}
+              >
+                Sign Up
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {activeTab === 0 ? (
+                <>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                </>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A68DAD]"
+                  />
+                </>
+              )}
+            </div>
+
+            <div className="mt-6 flex justify-between items-center">
+              {activeTab === 0 ? (
+                <button
+                  onClick={handleSignIn}
+                  className="bg-[#A68DAD] text-white px-4 py-2 rounded-md hover:bg-purple-500 transition"
+                >
+                  Sign In
+                </button>
+              ) : (
+                <button
+                  onClick={handleSignUp}
+                  className="bg-[#A68DAD] text-white px-4 py-2 rounded-md hover:bg-purple-500 transition"
+                >
+                  Sign Up
+                </button>
+              )}
+              <button
+                onClick={onClose}
+                className="text-[#A68DAD] border border-[#A68DAD] px-4 py-2 rounded-md hover:bg-purple-50 transition"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

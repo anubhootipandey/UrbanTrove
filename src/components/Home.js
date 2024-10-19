@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Grid, Card, CardContent, CardMedia, Button, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { ArrowForward } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 import PosterImg from '../assets/shopping.png';
 import banner from '../assets/banner.png';
+import clothingBrand from "../assets/clothing-brand.jpeg";
 
 const Home = () => {
   const [electronicsProducts, setElectronicsProducts] = useState([]);
@@ -40,162 +40,142 @@ const Home = () => {
     {
       id: 1,
       name: 'Brand 1',
-      image: 'https://via.placeholder.com/150',
+      image: clothingBrand,
     },
     {
       id: 2,
       name: 'Brand 2',
-      image: 'https://via.placeholder.com/150',
+      image: clothingBrand,
     },
     {
       id: 3,
       name: 'Brand 3',
-      image: 'https://via.placeholder.com/150',
+      image: clothingBrand,
     },
     {
       id: 4,
       name: 'Brand 4',
-      image: 'https://via.placeholder.com/150',
+      image: clothingBrand,
     },
   ];
 
   return (
-    <Box sx={{ padding: 3 }}>
-      <Box 
-        sx={{ 
-          // background: '#F0ECE3', 
-          padding: 2, 
-          marginBottom: 3, 
-          height: { xs: 'auto', md: '370px' }, 
-          display: 'flex', 
-          flexDirection: 'row', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          textAlign: 'center'
-        }}
-      >
-        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <img src={PosterImg} alt="Welcome Banner" style={{ maxWidth: '100%' }} />
-        </Box>
-        <Box sx={{ flex: 1, textAlign: 'left' }}>
-          <Typography variant="h2" gutterBottom sx={{ fontSize: { xs: '2rem', md: '3rem' } }}>
-            Welcome to our eCommerce store!
-          </Typography>
-          <Typography variant="body1" sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
-            Explore our wide range of products and find the perfect item for you.
-          </Typography>
-          <Button component={Link} to="/products" variant="contained" endIcon={<ArrowForward />} sx={{ marginTop: 2, backgroundColor: '#A68DAD', '&:hover': { backgroundColor: '#9279A1' } }}>
-            Explore Now
-          </Button>
-        </Box>
-      </Box>
+    <div className="p-6">
+      {/* Banner Section */}
+      <div className="flex flex-col md:flex-row items-center justify-center mb-8 mt-10 space-y-6 md:space-y-0">
+        <motion.img 
+          src={PosterImg} 
+          alt="Welcome Banner" 
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0 }}
+          whileHover={{ scale: 1.1 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+        <div className="md:w-1/2 text-left">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Welcome to our eCommerce store!</h1>
+          <p className="text-lg mb-6">Explore our wide range of products and find the perfect item for you.</p>
+          <Link to="/products" className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors inline-flex items-center">
+            Explore Now <svg className="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+      </div>
 
       {/* Featured Products Section */}
-      <Box sx={{ background: '#DFD3C3', padding: 3, marginBottom: 3, marginTop: 14, minHeight: 500, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Featured Products
-        </Typography>
-        <Grid container spacing={2}>
+      <div className="bg-gray-100 p-6 text-center mb-8">
+        <h2 className="text-2xl font-bold mb-4">Featured Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {featuredProducts.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
-                <CardMedia
-                  component="img"
-                  image={product.image}
-                  alt={product.title}
-                  sx={{ height: 250 }}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" sx={{ fontSize: '1rem' }}>{product.title}</Typography>
-                  <Typography variant="body2" color="textSecondary" sx={{ fontSize: '0.875rem', marginBottom: 1 }}>${product.price}</Typography>
-                  <Button component={Link} to={`/products/${product.id}`} variant="contained" sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' }, fontSize: '0.875rem' }}>View Details</Button>
-                </CardContent>
-              </Card>
-            </Grid>
+            <motion.div 
+              key={product.id}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
+            >
+              <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
+              <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+              <p className="text-gray-600 mb-4">${product.price}</p>
+              <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
+                View Details
+              </Link>
+            </motion.div>
           ))}
-        </Grid>
-      </Box>
+        </div>
+      </div>
 
-      {/* Clothing Brands Logo Section */}
-      <Box sx={{ 
-        // background: '#C7B198', 
-        padding: 3, 
-        marginBottom: 3, 
-        textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom sx={{ marginBottom: 2 }}>
-          Clothing Brands
-        </Typography>
-        <Grid container spacing={2} justifyContent="center">
+      {/* Clothing Brands Section */}
+      <div className="p-6 text-center mb-8">
+        <h2 className="text-2xl font-bold mb-4">Clothing Brands</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {clothingBrands.map((brand) => (
-            <Grid item key={brand.id}>
-              <img src={brand.image} alt={brand.name} style={{ height: 100 }} />
-            </Grid>
+            <motion.img 
+              key={brand.id} 
+              src={brand.image} 
+              alt={brand.name}
+              className="h-32 w-full object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            />
           ))}
-        </Grid>
-      </Box>
+        </div>
+      </div>
 
       {/* Special Banner Section */}
-      <Box sx={{ background: '#DFD3C3', padding: 3, marginBottom: 3, display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <img src={banner} alt="Special Collection" style={{ maxWidth: '100%' }} />
-        </Box>
-        <Box sx={{ flex: 1 }}>
-          <Typography variant="h4" gutterBottom sx={{ fontSize: '2rem', fontWeight: 'bold', color: '#A68DAD' }}>
-            Discover Our Special Collection
-          </Typography>
-          <Button component={Link} to="/special-collection" variant="contained" endIcon={<ArrowForward />} sx={{ backgroundColor: '#A68DAD', '&:hover': { backgroundColor: '#9279A1' } }}>
-            Explore Now
-          </Button>
-        </Box>
-      </Box>
+      <div className="bg-gray-100 p-6 flex items-center mb-8">
+        <motion.img 
+          src={banner} 
+          alt="Special Collection" 
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+        <div className="md:w-1/2 ml-6">
+          <h2 className="text-2xl font-bold mb-4 text-[#A68DAD]">Discover Our Special Collection</h2>
+          <Link to="/special-collection" className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors inline-flex items-center">
+            Explore Now <svg className="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+      </div>
 
       {/* Electronics Products Section */}
-      <Box sx={{ padding: 3, marginBottom: 3, minHeight: 500, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Popular Electronics
-        </Typography>
-        <Grid container spacing={2}>
+      <div className="p-6 text-center mb-8">
+        <h2 className="text-2xl font-bold mb-4">Popular Electronics</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {electronicsProducts.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4}>
-              <Card sx={{ background: '#DFD3C3', height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
-                <CardMedia
-                  component="img"
-                  image={product.image}
-                  alt={product.title}
-                  sx={{ height: 250 }}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" sx={{ fontSize: '1rem' }}>{product.title}</Typography>
-                  <Typography variant="body2" color="textSecondary" sx={{ fontSize: '0.875rem', marginBottom: 1 }}>${product.price}</Typography>
-                  <Button component={Link} to={`/products/${product.id}`} variant="contained" sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' }, fontSize: '0.875rem' }}>View Details</Button>
-                </CardContent>
-              </Card>
-            </Grid>
+            <motion.div 
+              key={product.id}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
+            >
+              <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
+              <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+              <p className="text-gray-600 mb-4">${product.price}</p>
+              <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
+                View Details
+              </Link>
+            </motion.div>
           ))}
-        </Grid>
-      </Box>
+        </div>
+      </div>
 
       {/* Newsletter Section */}
-      <Box sx={{ background: '#F0ECE3', padding: 3, marginBottom: 3, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Get Exclusive Offers on Your Email!
-        </Typography>
-        <Typography variant="body1">
-          Stay up-to-date with our latest offers and products.
-        </Typography>
-        <Box sx={{ marginTop: 2 }}>
-          <TextField 
-            fullWidth 
-            label="Your Email" 
-            variant="outlined" 
-            sx={{ '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#A68DAD' },
-            '& .MuiInputLabel-root.Mui-focused': { color: '#A68DAD' }
-           }} 
+      <div className="bg-gray-100 p-6 text-center">
+        <h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
+        <p className="text-lg mb-4">Subscribe to our newsletter to receive updates on new products and special offers.</p>
+        <div className="flex justify-center">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            className="border border-gray-300 p-2 rounded mr-2"
           />
-          <Button variant="contained" sx={{ background: '#A68DAD', '&:hover': { background: '#9279A1' }, marginTop: 2 }}>Shop Now</Button>
-        </Box>
-      </Box>
-    </Box>
+          <button className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ import Cart from './components/Cart';
 import TransactionDetail from './components/TransactionDetail';
 import FAQ from './components/FAQ';
 import About from './components/About';
-import './App.css';  // Import your CSS file
+import './App.css';  
 
 function App() {
   return (
