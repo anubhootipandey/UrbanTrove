@@ -61,7 +61,6 @@ const Header = () => {
           <Link to="/contact" className="text-[#A68DAD] hover:text-gray-700">Contact</Link>
         </nav>
 
-        {/* Icons */}
         <div className="flex items-center space-x-4">
           <Link to="/cart" className="relative">
             <ShoppingCart className="text-[#A68DAD]" />
@@ -77,7 +76,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Drawer */}
       {drawerOpen && (
         <div className="fixed inset-0 z-20 bg-black bg-opacity-50" onClick={toggleDrawer(false)}>
           <div className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg p-4">
@@ -86,7 +84,6 @@ const Header = () => {
         </div>
       )}
 
-      {/* SignIn/SignUp Modal */}
       <SignInSignUpModal open={open} onClose={handleClose} />
     </header>
   );

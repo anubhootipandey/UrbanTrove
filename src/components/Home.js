@@ -7,12 +7,19 @@ import clothingBrand from "../assets/clothing-brand.jpeg";
 
 const Home = () => {
   const [electronicsProducts, setElectronicsProducts] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products/category/electronics')
       .then(response => response.json())
-      .then(data => setElectronicsProducts(data))
-      .catch(error => console.error('Error fetching electronics products:', error));
+      .then(data => {
+        setElectronicsProducts(data);
+        setLoading(false); 
+      })
+      .catch(error => {
+        console.error('Error fetching electronics products:', error);
+        setLoading(false); 
+      });
   }, []);
 
   const featuredProducts = [
@@ -59,9 +66,17 @@ const Home = () => {
     },
   ];
 
+  const SkeletonCard = () => (
+    <div className="bg-gray-200 animate-pulse rounded-lg shadow-lg p-4 flex flex-col">
+      <div className="h-64 bg-gray-300 mb-4 rounded"></div>
+      <div className="h-6 bg-gray-300 mb-2 rounded"></div>
+      <div className="h-6 bg-gray-300 mb-2 rounded w-1/2"></div>
+      <div className="h-8 bg-gray-300 rounded"></div>
+    </div>
+  );
+
   return (
     <div className="p-6">
-      {/* Banner Section */}
       <div className="flex flex-col md:flex-row items-center justify-center mb-8 mt-10 space-y-6 md:space-y-0">
         <motion.img 
           src={PosterImg} 
@@ -81,29 +96,30 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Featured Products Section */}
       <div className="bg-gray-100 p-6 text-center mb-8">
         <h2 className="text-2xl font-bold mb-4">Featured Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {featuredProducts.map((product) => (
-            <motion.div 
-              key={product.id}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-              className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
-            >
-              <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
-              <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
-              <p className="text-gray-600 mb-4">${product.price}</p>
-              <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
-                View Details
-              </Link>
-            </motion.div>
-          ))}
+          {loading 
+            ? Array(3).fill(<SkeletonCard />) 
+            : featuredProducts.map((product) => (
+                <motion.div 
+                  key={product.id}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
+                >
+                  <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">${product.price}</p>
+                  <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
+                    View Details
+                  </Link>
+                </motion.div>
+              ))
+          }
         </div>
       </div>
 
-      {/* Clothing Brands Section */}
       <div className="p-6 text-center mb-8">
         <h2 className="text-2xl font-bold mb-4">Clothing Brands</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -120,7 +136,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Special Banner Section */}
       <div className="bg-gray-100 p-6 flex items-center mb-8">
         <motion.img 
           src={banner} 
@@ -138,29 +153,29 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Electronics Products Section */}
       <div className="p-6 text-center mb-8">
         <h2 className="text-2xl font-bold mb-4">Popular Electronics</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {electronicsProducts.map((product) => (
-            <motion.div 
-              key={product.id}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-              className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
-            >
-              <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
-              <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
-              <p className="text-gray-600 mb-4">${product.price}</p>
-              <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
-                View Details
-              </Link>
-            </motion.div>
-          ))}
+          {loading 
+            ? Array(3).fill(<SkeletonCard />) 
+            : electronicsProducts.map((product) => (
+                <motion.div 
+                  key={product.id}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="bg-white rounded-lg shadow-lg p-4 flex flex-col"
+                >
+                  <img src={product.image} alt={product.title} className="h-64 w-full object-cover mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">${product.price}</p>
+                  <Link to={`/products/${product.id}`} className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors text-sm">
+                    View Details
+                  </Link>
+                </motion.div>
+              ))
+          }
         </div>
       </div>
-
-      {/* Newsletter Section */}
       <div className="bg-gray-100 p-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
         <p className="text-lg mb-4">Subscribe to our newsletter to receive updates on new products and special offers.</p>

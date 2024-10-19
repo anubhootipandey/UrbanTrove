@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
-import { Rating } from '@mui/material'; // Retained for Rating component functionality
+import { Rating } from '@mui/material'; 
+import "../App.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [loading, setLoading] = useState(true); 
   const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
+    setLoading(true);
     axios.get('https://fakestoreapi.com/products')
       .then(response => {
         const productsWithRating = response.data.map(product => ({
@@ -20,8 +23,12 @@ const Products = () => {
         }));
         setProducts(productsWithRating);
         setFilteredProducts(productsWithRating);
+        setLoading(false); 
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        setLoading(false); 
+      });
 
     axios.get('https://fakestoreapi.com/products/categories')
       .then(response => setCategories(response.data))
@@ -64,6 +71,14 @@ const Products = () => {
   const generateRandomRating = () => {
     return Math.floor(Math.random() * 5) + 1;
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6">

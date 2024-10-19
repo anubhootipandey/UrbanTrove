@@ -1,0 +1,9 @@
+.loader {
+    border-top-color: #A68DAD;
+    animation: spinner 0.6s linear infinite;
+  }
+  
+  @keyframes spinner {
+    to { transform: rotate(360deg); }
+  }
+  
