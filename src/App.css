@@ -7,3 +7,17 @@
     to { transform: rotate(360deg); }
   }
   
+.app {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.light {
+  background-color: white;
+  color: black;
+}
+
+.app.dark {
+  background-color: black;
+  color: white;
+}
+

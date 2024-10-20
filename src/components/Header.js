@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, AccountCircle, Menu as MenuIcon } from '@mui/icons-material';
 import { useCart } from './CartContext';
 import SignInSignUpModal from './SignInSignUpModal';
+import { ThemeContext } from './ThemeContext';
+import { Switch } from '@mui/material';
 
 const Header = () => {
   const { cart } = useCart();
   const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,7 +46,7 @@ const Header = () => {
   );
 
   return (
-    <header className="top-0 left-0 w-full bg-gradient-to-r bg-gray-100 text-[#A68DAD] shadow-md z-10">
+    <header className={`top-0 left-0 w-full bg-gradient-to-r bg-gray-100 text-[#A68DAD] shadow-md z-10 ${theme}`}>
       <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-6">
         
         <button className="md:hidden text-[#C7B198]" onClick={toggleDrawer(true)}>
@@ -73,6 +77,12 @@ const Header = () => {
           <button onClick={handleClickOpen}>
             <AccountCircle className="text-[#A68DAD]" />
           </button>
+          <Switch
+            checked={theme === 'dark'}
+            onChange={toggleTheme}
+            color="default"
+            inputProps={{ 'aria-label': 'theme toggle switch' }}
+          />
         </div>
       </div>
 
@@ -85,6 +95,7 @@ const Header = () => {
       )}
 
       <SignInSignUpModal open={open} onClose={handleClose} />
+
     </header>
   );
 };
