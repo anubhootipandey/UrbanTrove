@@ -113,7 +113,7 @@ const Products = () => {
                 <Rating name={`rating-${product.id}`} value={product.rating} readOnly />
                 <p className="text-gray-500 text-xs ml-2">({Math.floor(Math.random() * 100) + 1})</p>
               </div>
-              <div className="flex space-x-2 mt-auto">
+              <div className="flex justify-between space-x-2 mt-auto">
                 <Link to={`/products/${product.id}`}>
                   <button className="bg-[#A68DAD] hover:bg-[#9279A1] text-white text-sm font-semibold py-2 px-4 rounded-lg">View Details</button>
                 </Link>

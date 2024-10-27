@@ -19,11 +19,11 @@ const FAQ = () => {
     {
       question: "How can I contact customer support?",
       answer: "You can contact our customer support via email at support@ecommerce.com or call us at (123) 456-7890. Our support team is available 24/7."
-    }
+    },
   ];
 
   const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index); // Toggle open/close
+    setOpenIndex(openIndex === index ? null : index); 
   };
 
   return (

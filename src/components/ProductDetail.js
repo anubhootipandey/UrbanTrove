@@ -10,11 +10,19 @@ const ProductDetail = () => {
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   const { cart, addToCart, removeFromCart } = useCart();
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
+    setLoading(true);
     axios.get(`https://fakestoreapi.com/products/${id}`)
-      .then(response => setProduct(response.data))
-      .catch(error => console.error(error));
+      .then((response) => {
+        setProduct(response.data);
+        setLoading(false); 
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false); 
+      });
   }, [id]);
 
   const isInCart = (product) => {
@@ -42,6 +50,14 @@ const ProductDetail = () => {
   const handleSizeChange = (event) => {
     setSize(event.target.value);
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 md:p-8">
