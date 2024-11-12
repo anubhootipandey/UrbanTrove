@@ -11,17 +11,22 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const { cart, addToCart, removeFromCart } = useCart();
   const [loading, setLoading] = useState(true); 
+  const [suggestedProducts, setSuggestedProducts] = useState([]); 
 
   useEffect(() => {
     setLoading(true);
     axios.get(`https://fakestoreapi.com/products/${id}`)
       .then((response) => {
         setProduct(response.data);
-        setLoading(false); 
+        setLoading(false);
+        return axios.get(`https://fakestoreapi.com/products/category/${response.data.category}`);
+      })
+      .then((response) => {
+        setSuggestedProducts(response.data.filter(item => item.id !== parseInt(id)));
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false); 
+        setLoading(false);
       });
   }, [id]);
 
@@ -107,19 +112,37 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className="flex items-center mb-4">
-              <div className="flex items-center">
-                <span className="text-yellow-500">⭐️⭐️⭐️⭐️⭐️</span> 
-                <p className="ml-2 text-sm text-gray-500">(100 reviews)</p>
-              </div>
-            </div>
-
             <button
               onClick={handleAddRemoveCart}
               className="bg-[#A68DAD] text-white px-4 py-2 rounded-lg hover:bg-[#8a778f] transition"
             >
               {isInCart(product) ? 'Remove from Cart' : 'Add to Cart'}
             </button>
+          </div>
+        </div>
+      )}
+
+      {suggestedProducts.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4">Suggested Products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {suggestedProducts.map((suggestedProduct) => (
+              <div key={suggestedProduct.id} className="bg-white rounded-lg shadow-lg p-4">
+                <img
+                  src={suggestedProduct.image}
+                  alt={suggestedProduct.title}
+                  className="w-full h-40 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-lg font-semibold">{suggestedProduct.title}</h3>
+                <p className="text-gray-700">${suggestedProduct.price}</p>
+                <button
+                  onClick={() => addToCart(suggestedProduct)}
+                  className="mt-2 bg-[#A68DAD] text-white px-4 py-2 rounded-lg hover:bg-[#8a778f] transition"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       )}
