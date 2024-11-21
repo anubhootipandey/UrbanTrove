@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
-import { Rating } from '@mui/material'; 
+import { Rating } from '@mui/material';
+import { Search, FilterList } from '@mui/icons-material';
 import "../App.css";
 
 const Products = () => {
@@ -10,7 +11,9 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
   const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
@@ -19,15 +22,15 @@ const Products = () => {
       .then(response => {
         const productsWithRating = response.data.map(product => ({
           ...product,
-          rating: generateRandomRating() 
+          rating: generateRandomRating()
         }));
         setProducts(productsWithRating);
         setFilteredProducts(productsWithRating);
-        setLoading(false); 
+        setLoading(false);
       })
       .catch(error => {
         console.error(error);
-        setLoading(false); 
+        setLoading(false);
       });
 
     axios.get('https://fakestoreapi.com/products/categories')
@@ -35,16 +38,10 @@ const Products = () => {
       .catch(error => console.error(error));
   }, []);
 
-  const isInCart = (product) => {
-    return cart.some(item => item.id === product.id);
-  };
+  const isInCart = (product) => cart.some(item => item.id === product.id);
 
   const handleToggleCart = (product) => {
-    if (isInCart(product)) {
-      removeFromCart(product);
-    } else {
-      addToCart(product);
-    }
+    isInCart(product) ? removeFromCart(product) : addToCart(product);
   };
 
   const handleSearch = (event) => {
@@ -55,22 +52,18 @@ const Products = () => {
     setFilteredProducts(filtered);
   };
 
-  const handleCategoryChange = (event) => {
-    const category = event.target.value;
+  const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    if (category === '') {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter(product =>
-        product.category === category
-      );
-      setFilteredProducts(filtered);
-    }
+    setFilteredProducts(
+      category === '' ? products : products.filter(product => product.category === category)
+    );
+    setFilterDropdownOpen(false);
   };
 
-  const generateRandomRating = () => {
-    return Math.floor(Math.random() * 5) + 1;
-  };
+  const toggleSearchVisibility = () => setSearchVisible(!searchVisible);
+  const toggleFilterDropdown = () => setFilterDropdownOpen(!filterDropdownOpen);
+
+  const generateRandomRating = () => Math.floor(Math.random() * 5) + 1;
 
   if (loading) {
     return (
@@ -82,27 +75,72 @@ const Products = () => {
 
   return (
     <div className="p-6">
-      <div className="mb-6 flex flex-col md:flex-row items-center">
-        <input
-          type="text"
-          placeholder="Search Products"
-          onChange={handleSearch}
-          className="border-2 border-gray-300 focus:border-[#A68DAD] focus:ring-[#A68DAD] rounded-lg py-2 px-4 w-full md:w-2/3 mb-4 md:mb-0"
-        />
-        <label className="md:ml-4 mb-2 md:mb-0 md:mr-2">Category:</label>
-        <select
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-          className="border-2 border-gray-300 rounded-lg p-2 w-full md:w-1/3"
-        >
-          <option value="">All</option>
+      {filterDropdownOpen && (
+        <div className="absolute top-[150px] left-0 right-0 z-10 bg-white border border-gray-300 rounded-lg shadow-lg mx-auto max-w-xs">
+          <button
+            onClick={() => handleCategoryChange('')}
+            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+          >
+            All
+          </button>
           {categories.map(category => (
-            <option key={category} value={category}>{category}</option>
+            <button
+              key={category}
+              onClick={() => handleCategoryChange(category)}
+              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >
+              {category}
+            </button>
           ))}
-        </select>
+        </div>
+      )}
+
+      <div className="mb-6 flex items-center relative gap-4">
+        <div className="flex space-x-4 items-center">
+          <button
+            onClick={toggleSearchVisibility}
+            className="flex items-center bg-gray-200 p-2 rounded-lg text-gray-700 md:hidden"
+          >
+            <Search className="text-gray-500" />
+          </button>
+          {searchVisible && (
+            <input
+              type="text"
+              placeholder="Search Products"
+              onChange={handleSearch}
+              className="border-2 border-gray-300 focus:border-[#A68DAD] focus:ring-[#A68DAD] rounded-lg py-2 px-10 w-full md:w-2/3 mt-2 md:mt-0 md:block"
+            />
+          )}
+          
+          <button
+            onClick={toggleFilterDropdown}
+            className="flex items-center bg-gray-200 p-2 rounded-lg text-gray-700 md:hidden"
+          >
+            <FilterList className="text-gray-500" />
+          </button>
+        </div>
+
+        <div className="hidden md:flex items-center w-full md:w-2/3 relative">
+          <Search className="absolute left-3 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search Products"
+            onChange={handleSearch}
+            className="border-2 border-gray-300 focus:border-[#A68DAD] focus:ring-[#A68DAD] rounded-lg py-2 px-10 w-full"
+          />
+        </div>
+
+        <div className="hidden md:flex items-center">
+          <button
+            onClick={toggleFilterDropdown}
+            className="flex items-center bg-gray-200 p-2 rounded-lg text-gray-700"
+          >
+            <FilterList className="mr-1" /> Filter by Category
+          </button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-14">
         {filteredProducts.map((product) => (
           <div key={product.id} className="bg-gray-100 rounded-lg shadow-md transform transition-transform hover:scale-105 flex flex-col">
             <img src={product.image} alt={product.title} className="h-64 object-cover rounded-t-lg" />
