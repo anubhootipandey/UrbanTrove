@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, AccountCircle, Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
+import { ShoppingCart, AccountCircle, Menu as MenuIcon, Close as CloseIcon, Shop } from "@mui/icons-material";
 import { useCart } from "./CartContext";
 import SignInSignUpModal from "./SignInSignUpModal";
 import { ThemeContext } from "./ThemeContext";
@@ -77,7 +77,7 @@ const Header = () => {
         >
           <AccountCircle className="mr-2" /> Profile
         </button>
-        <div className="flex items-center justify-between px-4 py-2 w-3/4 bg-[#A68DAD] rounded-md">
+        {/* <div className="flex items-center justify-between px-4 py-2 w-3/4 bg-[#A68DAD] rounded-md">
           <span className="text-white">Dark Mode</span>
           <Switch
             checked={theme === "dark"}
@@ -85,7 +85,7 @@ const Header = () => {
             color="default"
             inputProps={{ "aria-label": "theme toggle switch" }}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -100,7 +100,7 @@ const Header = () => {
         </button>
 
         <Link to="/" className="text-2xl font-bold text-[#A68DAD] no-underline">
-          eCommerce
+        UrbanTrove <Shop />
         </Link>
 
         <nav className="hidden md:flex space-x-4">

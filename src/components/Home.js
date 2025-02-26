@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import PosterImg from '../assets/shopping.png';
 import banner from '../assets/banner.png';
 import clothingBrand from "../assets/clothing-brand.jpeg";
+import { Shop } from '@mui/icons-material';
 
 const Home = () => {
   const [electronicsProducts, setElectronicsProducts] = useState([]);
@@ -88,7 +89,7 @@ const Home = () => {
           transition={{ duration: 1 }}
         />
         <div className="md:w-1/2 text-left">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">Welcome to our eCommerce store!</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Welcome to UrbanTrove <Shop /></h1>
           <p className="text-lg mb-6">Explore our wide range of products and find the perfect item for you.</p>
           <Link to="/products" className="bg-[#A68DAD] text-white py-2 px-4 rounded hover:bg-[#97829c] transition-colors inline-flex items-center">
             Explore Now <svg className="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
