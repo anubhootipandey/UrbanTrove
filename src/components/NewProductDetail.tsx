@@ -73,19 +73,16 @@ const NewProductDetail: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
 
-      {/* BACK BUTTON */}
       <button
         onClick={handleBack}
-        className="flex items-center gap-2 text-purple-700 font-semibold mb-6 hover:underline"
+        className="flex items-center gap-2 text-[#f20089] font-semibold mb-6 hover:underline"
       >
         <ArrowLeft className="w-4 h-4" /> Back
       </button>
 
-      {/* MAIN PRODUCT CARD */}
       {product && (
         <div className="flex flex-col md:flex-row gap-8">
 
-          {/* IMAGE AREA */}
           <div className="bg-gray-100 w-full md:w-1/2 h-80 flex items-center justify-center rounded-lg">
             <img
               src={product.image}
@@ -94,10 +91,9 @@ const NewProductDetail: React.FC = () => {
             />
           </div>
 
-          {/* PRODUCT DETAILS */}
           <div className="flex-1 flex flex-col gap-4">
 
-            <h1 className="text-3xl font-bold text-purple-700">
+            <h1 className="text-3xl font-bold text-[#f20089]">
               {product.title}
             </h1>
 
@@ -114,9 +110,7 @@ const NewProductDetail: React.FC = () => {
               ${product.price}
             </div>
 
-            {/* SIZE + QUANTITY */}
             <div className="flex items-center gap-6 mt-4">
-              {/* Size */}
               <div>
                 <label className="block text-gray-700 font-semibold mb-1">
                   Size
@@ -124,7 +118,7 @@ const NewProductDetail: React.FC = () => {
                 <select
                   value={size}
                   onChange={(e) => setSize(e.target.value)}
-                  className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-purple-500"
+                  className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-500"
                 >
                   <option value="">Select Size</option>
                   <option value="S">S</option>
@@ -134,7 +128,6 @@ const NewProductDetail: React.FC = () => {
                 </select>
               </div>
 
-              {/* Quantity */}
               <div>
                 <label className="block text-gray-700 font-semibold mb-1">
                   Quantity
@@ -142,14 +135,14 @@ const NewProductDetail: React.FC = () => {
                 <div className="flex items-center border rounded-full px-3 py-1 border-gray-300">
                   <button
                     onClick={handleDecrement}
-                    className="px-3 text-xl hover:text-purple-700"
+                    className="px-3 text-xl hover:text-[#f20089]"
                   >
                     -
                   </button>
                   <span className="px-3">{quantity}</span>
                   <button
                     onClick={handleIncrement}
-                    className="px-3 text-xl hover:text-purple-700"
+                    className="px-3 text-xl hover:text-[#f20089]"
                   >
                     +
                   </button>
@@ -157,20 +150,19 @@ const NewProductDetail: React.FC = () => {
               </div>
             </div>
 
-            {/* ACTION BUTTONS */}
             <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => toggleFavorite(product.id)}
                 className={`p-2 rounded-full border ${
                   favorites.includes(product.id)
-                    ? "bg-purple-700 text-white"
+                    ? "bg-[#f20089] text-white"
                     : "text-gray-700 border-gray-300"
                 }`}
               >
                 <Heart className="w-5 h-5" />
               </button>
 
-              <button className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">
+              <button className="bg-[#f20089] text-white px-4 py-2 rounded hover:bg-purple-800 transition">
                 Add to Cart
               </button>
             </div>
@@ -178,10 +170,9 @@ const NewProductDetail: React.FC = () => {
         </div>
       )}
 
-      {/* RELATED PRODUCTS */}
       {suggestedProducts.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-purple-700 mb-6">
+          <h2 className="text-2xl font-bold text-[#f20089] mb-6">
             Related Products
           </h2>
 
@@ -201,7 +192,7 @@ const NewProductDetail: React.FC = () => {
                 </div>
 
                 <Link to={`/newproducts/${p.id}`}>
-                <h3 className="text-purple-700 font-semibold truncate">
+                <h3 className="text-[#f20089] font-semibold truncate">
                   {p.title}
                 </h3>
                 </Link>

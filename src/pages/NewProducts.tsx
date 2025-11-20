@@ -17,6 +17,7 @@ const NewProducts = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [searchKeyword, setSearchKeyword] = useState<string>(""); 
   const [loading, setLoading] = useState<boolean>(true);
   const [searchVisible, setSearchVisible] = useState<boolean>(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState<boolean>(false);
@@ -45,21 +46,32 @@ const NewProducts = () => {
   }, []);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const keyword = e.target.value.toLowerCase();
-
-    setFilteredProducts(
-      products.filter((p) => p.title.toLowerCase().includes(keyword))
-    );
+    setSearchKeyword(e.target.value.toLowerCase());
   };
 
   const applyCategory = (cat: string) => {
     setSelectedCategory(cat);
     setFilterDropdownOpen(false);
-
-    setFilteredProducts(
-      cat === "" ? products : products.filter((p) => p.category === cat)
-    );
   };
+
+  // 🔥 Main filtering logic using BOTH search + category
+  useEffect(() => {
+    let updated = [...products];
+
+    if (selectedCategory !== "") {
+      updated = updated.filter(
+        (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+
+    if (searchKeyword.trim() !== "") {
+      updated = updated.filter((p) =>
+        p.title.toLowerCase().includes(searchKeyword)
+      );
+    }
+
+    setFilteredProducts(updated);
+  }, [selectedCategory, searchKeyword, products]);
 
   if (loading) {
     return (
@@ -71,11 +83,7 @@ const NewProducts = () => {
 
   return (
     <div className="p-6">
-
-      {/* Search + Filter */}
       <div className="mb-6 flex items-center gap-4 relative">
-
-        {/* Mobile search toggle */}
         <button
           onClick={() => setSearchVisible(!searchVisible)}
           className="md:hidden p-2 bg-gray-200 rounded-lg"
@@ -83,7 +91,6 @@ const NewProducts = () => {
           <Search className="w-5 h-5 text-gray-600" />
         </button>
 
-        {/* Mobile search input */}
         {searchVisible && (
           <input
             type="text"
@@ -93,7 +100,6 @@ const NewProducts = () => {
           />
         )}
 
-        {/* Desktop search */}
         <div className="hidden md:flex items-center w-full relative">
           <Search className="absolute left-3 text-gray-500" />
           <input
@@ -104,7 +110,6 @@ const NewProducts = () => {
           />
         </div>
 
-        {/* Filter Button Wrapper */}
         <div className="relative" ref={filterRef}>
           <button
             onClick={() => setFilterDropdownOpen(!filterDropdownOpen)}
@@ -114,7 +119,6 @@ const NewProducts = () => {
             <span className="hidden md:block">Filter</span>
           </button>
 
-          {/* Dropdown appears exactly BELOW the button */}
           {filterDropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow z-20">
               <button
@@ -138,14 +142,12 @@ const NewProducts = () => {
         </div>
       </div>
 
-      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white shadow rounded-lg overflow-hidden hover:shadow-lg transition relative"
           >
-            {/* NEW TAG */}
             <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded-3xl">
               NEW!
             </span>
@@ -157,25 +159,29 @@ const NewProducts = () => {
 
             <div className="p-4 flex flex-col h-full">
               <Link to={`/new-products/${product.id}`}>
-              <h2 className="font-semibold mb-2 truncate">{product.title}</h2>
+                <h2 className="font-semibold mb-2 truncate">{product.title}</h2>
               </Link>
 
-              <p className="text-gray-700 mb-2 font-medium">${product.price}</p>
+              <p className="text-gray-700 mb-2 font-medium">
+                ${product.price}
+              </p>
 
-              {/* Rating */}
               <div className="flex items-center gap-1 mb-3">
                 {Array.from({ length: product.rating }).map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-lg">★</span>
+                  <span key={i} className="text-yellow-500 text-lg">
+                    ★
+                  </span>
                 ))}
                 {Array.from({ length: 5 - product.rating }).map((_, i) => (
-                  <span key={i} className="text-gray-400 text-lg">★</span>
+                  <span key={i} className="text-gray-400 text-lg">
+                    ★
+                  </span>
                 ))}
               </div>
             </div>
           </div>
         ))}
       </div>
-
     </div>
   );
 };
